@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MushokuTop - Latino</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="navbar-slot"></div>
+
+<div class="page-header">
+  <h1>Episodios - Latino</h1>
+  <p>Todos los episodios de Mushoku Tensei con doblaje latino, organizados por temporada.</p>
+</div>
+
+<section class="seasons-section" id="temporadas">
+  <div id="accordion"></div>
+</section>
+
+<div id="footer-slot"></div>
+
+<script src="script.js"></script>
+<script>
+  renderNavbar('latino');
+  renderFooter();
+
+  const SEASONS = SEASON_DATA.map((s, i) => ({ ...s, open: i === SEASON_DATA.length - 1 }));
+
+  buildAccordion('accordion', SEASONS, 'Latino');
+  initSearchFilter('accordion');
+  initSearchDropdown('latino');
+  openSeasonFromHash('accordion');
+  window.addEventListener('hashchange', () => openSeasonFromHash('accordion'));
+</script>
+
+</body>
+</html>
